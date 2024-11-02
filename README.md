@@ -8,11 +8,11 @@ v1.2.6
 
 <h4 align=center>
   <a href=#getting-ready>
-    Go to here to get Fleasion after reading this notice
+    Go to here to get Reasion after reading this notice
   </a>
 </h4>
 
-<h1 align="center">How to use Fleasion?</h1>
+<h1 align="center">How to use Reasion?</h1>
 
 <h3 align="center">
   Watch <a href="tutorial to be made soon"> this tutorial </a>
@@ -62,8 +62,7 @@ v1.2.6
     </a>
   </p>
 
-<b>Reasion requires you to load resources before you can use it.</b> <br>You will be redirected to <a href=https://www.roblox.com/games/18504289170/Texture-Game><b>Texture Game</b></a>
-and <a href=https://www.roblox.com/games/292439477/Phantom-Forces><b>Phantom Forces</b></a> upon launching Fleasion to load said resources. <b>Some</b> actions will also require you to do something to load the default:
+<b>Reasion requires you to load resources before you can use it.</b> <br>You will be redirected to multiple games upon launching Reasion to load said resources. <b>Some</b> actions will also require you to do something to load the default:
 <li> <b>Sights</b> (Equip the sight on a gun)
 <li> <b>In-game sounds</b> (Trigger the sound before replacing it)
 <li> <b>Skins</b> (Equip the skin on a gun / Load the skin's preview in the case shop)
@@ -89,14 +88,13 @@ If you messed up, type "skip" to go back.
 
 <h3 align="center">Bloxstrap Compatibility</h3>
 For the <code>Force default skyboxes</code> feature, it's recommended to be used alongside <a href=https://bloxstrap.pizzaboxer.xyz>Bloxstrap</a>. <br>
-Custom Bloxstrap skyboxes only work on maps with default skyboxes, <br> so using Fleasion to force default skyboxes allows custom Bloxstrap 
+Custom Bloxstrap skyboxes only work on maps with default skyboxes, <br> so using Reasion to force default skyboxes allows custom Bloxstrap 
 skyboxes to be used on any map.
 
 
 <h3 align=center>Hashes</h3>
 <p>
-All of the hashes used to replace textures/audio are stored internally in <a href=https://github.com/CroppingFlea479/Fleasion/blob/main/assets.json>assets.json</a>, and are updated regularly with new additions. <br>
-For a more human readable dump of some of the PF hashes, see this <a href=https://docs.google.com/spreadsheets/d/1S7GexRGkgiDXit8qabV7rYFOctO6FraZrrTm1-Rru_4/edit?usp=sharing>spreadsheet</a> compiled by <a href=https://discord.com/users/749886948579213352>Yolo</a> and <a href=https://discord.com/users/391844483970498562>Commit</a>.
+All of the hashes used to replace textures/audio are stored internally in <a href=https://github.com/standingmcdonalds/Reasion/blob/main/assets.json>assets.json</a>, and are updated regularly with new additions. <br>
 </p>
 
 
