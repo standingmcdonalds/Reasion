@@ -101,10 +101,13 @@ For a more human readable dump of some of the PF hashes, see this <a href=https:
 
 
 <h1 align=center>Reasion team</h1>
+
+<h2 align=center>
   <a>
     <a href=https://discord.com/users/901845058591027240>tiny</a>,
     <a href=https://discord.com/users/313054350035386379>geqr</a>,
-
+   </a>
+    
 <h1 align=center>Fleasion Team</h1>
 
 <h2 align=center>
