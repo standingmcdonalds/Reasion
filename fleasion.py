@@ -11,11 +11,11 @@ import webbrowser
 import requests
 import platform
 
-README_URL = 'https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/README.md'
-FLEASION_URL = 'https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/fleasion.py'
-ASSETS_URL = 'https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/assets.json'
-RUN_URL = 'https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/run.bat'
-RUNSH_URL = 'https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/run.sh'
+README_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/README.md'
+FLEASION_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/fleasion.py'
+ASSETS_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/assets.json'
+RUN_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/run.bat'
+RUNSH_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/run.sh'
 README_FILE = 'README.md'
 FLEASION_FILE = 'fleasion.py'
 ASSETS_FILE = 'assets.json'
@@ -107,11 +107,9 @@ def get_version():
     if not os.path.exists(presets_file):
         with open(presets_file, 'w') as file:
             json.dump({
-                "replace oled": [
-                    '0fd98b21b47dbd948988ec1c67696af8',
-                    '5873cfba79134ecfec6658f559d8f320',
-                    '009b0b998ae084f23e5c0d7b1f9431b3',
-                    '577f6c95249ebea2926892c3f3e8c040'
+                "reflex dot": [
+                    '307c54a136464623905aa55ca5dc81d3',
+                    '192ce9c124a483a4fa063a1849fcb755'
                 ]
             }, file, indent=4)
         print(f"Created {BLUE}{presets_file}{DEFAULT}")
