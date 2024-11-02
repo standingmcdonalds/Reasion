@@ -103,7 +103,7 @@ All of the hashes used to replace textures/audio are stored internally in <a hre
 <h2 align=center>
   <a>
     <a href=https://discord.com/users/901845058591027240>tiny</a>,
-    <a href=https://discord.com/users/313054350035386379>geqr</a>,
+    <a href=https://discord.com/users/313054350035386379>geqr</a>
    </a>
     
 <h1 align=center>Fleasion Team</h1>
