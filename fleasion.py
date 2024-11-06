@@ -240,9 +240,9 @@ ar2_cache = False
 mod_cache_check_path = os.path.join(folder_path,
                                     '192ce9c124a483a4fa063a1849fcb755') 
 pf_cache_check_path = os.path.join(folder_path,
-                                   '7b8ca4a4ec7addd0f55179a86e49a5a1')
+                                   'f805e3b08c949c46a8f137e10c4d3fdd')
 ar2_cache_check_path = os.path.join(folder_path,
-                                   '025c9ff09c0c54793baa59dfa0115401')
+                                   '6d409aa81031bf5e6c43c9c56f2e2b49')
 
 if os.path.exists(mod_cache_check_path):
     mod_cache = True
