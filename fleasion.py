@@ -315,7 +315,7 @@ def get_hashes():
     output = []
     print(
         f"\nasset replacements:\n0:  {GREEN}Custom{DEFAULT}\n1:  {GREEN}Sights{DEFAULT}\n2:  {GREEN}Gun sounds{DEFAULT}\n3:  {GREEN}Gun skins{DEFAULT}\n4:  {GREEN}No textures{DEFAULT}\n5: {GREEN}Hit tweaks{DEFAULT}\n6: {GREEN}Misc tweaks{DEFAULT}\n7: )
-    options = input(": ")
+ options = input(":)
     try:
         match int(options):
             case 0:
