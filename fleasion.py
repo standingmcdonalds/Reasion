@@ -26,6 +26,67 @@ os_name = platform.system()
 clear_command = 'cls' if os_name == 'Windows' else 'clear'
 mesh_version = 'v2'
 
+def update_file(file_name, lines):
+    with open(file_name, 'w') as file:
+        file.write('\n'.join(lines))
+
+
+def get_version():
+    global presets_file
+    readme_first_line, readme_lines = fetch_lines(README_URL)
+    fleasion_first_line, fleasion_lines = fetch_lines(FLEASION_URL)
+    run_lines, all_run_lines = fetch_lines(RUN_URL, 2)
+    runsh_lines, all_runsh_lines = fetch_lines(RUNSH_URL, 2)
+
+    print("Validating file versions...")
+
+    local_readme_first_line = read_lines(README_FILE)[0]
+    if readme_first_line[0] == local_readme_first_line:
+        print(f"ReadMe   {GREEN}{readme_first_line[0]}{DEFAULT}")
+    else:
+        update_file(README_FILE, readme_lines)
+        print(f"Updated README.md to {BLUE}{readme_first_line[0]}{DEFAULT}")
+
+    local_fleasion_first_line = read_lines(FLEASION_FILE)[0]
+    fleasion_display = fleasion_first_line[0][2:]
+    if fleasion_first_line[0] == local_fleasion_first_line:
+        print(f"Fleasion {GREEN}{fleasion_display}{DEFAULT}")
+    else:
+        update_file(FLEASION_FILE, fleasion_lines)
+        print(f"Updated fleasion.py to {BLUE}{fleasion_display}{DEFAULT}")
+        os.execv(sys.executable, ['python'] + sys.argv)
+
+    response_assets = requests.get(ASSETS_URL)
+    response_json = response_assets.json()
+
+    try:
+        with open(ASSETS_FILE, 'r') as file:
+            local_assets = json.load(file)
+    except FileNotFoundError:
+        local_assets = {}
+
+    if response_json.get('version') == local_assets.get('version'):
+        print(f"Assets   {GREEN}{response_json['version']}{DEFAULT}")
+    else:
+        with open(ASSETS_FILE, 'w') as file:
+            json.dump(response_json, file, indent=4)
+        print(f"Updated assets.json to {BLUE}{response_json['version']}{DEFAULT}")
+
+    local_run_lines = read_lines(RUN_FILE, 2)
+    run_version = run_lines[1][2:]
+    if run_version == local_run_lines[1][2:]:
+        print(f"Run.bat  {GREEN}{run_version}{DEFAULT}")
+    else:
+        update_file(RUN_FILE, all_run_lines)
+        print(f"Updated run.bat to {BLUE}{run_version}{DEFAULT}")
+
+    local_runsh_lines = read_lines(RUNSH_FILE, 2)
+    runsh_version = runsh_lines[1][2:]
+    if runsh_version == local_runsh_lines[1][2:]:
+        print(f"Run.sh   {GREEN}{runsh_version}{DEFAULT}")
+    else:
+        update_file(RUNSH_FILE, all_runsh_lines)
+        print(f"Updated run.sh to  {BLUE}{runsh_version}{DEFAULT}")
 
 def fetch_lines(url, num_lines=1):
     response = requests.get(url)
