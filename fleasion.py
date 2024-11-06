@@ -11,11 +11,11 @@ import webbrowser
 import requests
 import platform
 
-README_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/README.md'
-FLEASION_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/fleasion.py'
-ASSETS_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/assets.json'
-RUN_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/run.bat'
-RUNSH_URL = 'https://github.com/standingmcdonalds/Reasion/blob/main/run.sh'
+README_URL = 'https://raw.githubusercontent.com/standingmcdonalds/Reasion/main/README.md'
+FLEASION_URL = 'https://raw.githubusercontent.com/standingmcdonalds/Reasion/main/fleasion.py'
+ASSETS_URL = 'https://raw.githubusercontent.com/standingmcdonalds/Reasion/main/assets.json'
+RUN_URL = 'https://raw.githubusercontent.com/standingmcdonalds/Reasion/main/run.bat'
+RUNSH_URL = 'https://raw.githubusercontent.com/standingmcdonalds/Reasion/main/run.sh'
 README_FILE = 'README.md'
 FLEASION_FILE = 'fleasion.py'
 ASSETS_FILE = 'assets.json'
