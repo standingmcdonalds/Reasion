@@ -235,26 +235,33 @@ else:
 
 mod_cache = False
 pf_cache = False
+ar2_cache = False
 
 mod_cache_check_path = os.path.join(folder_path,
-                                    '3dbc81ab51ae36ab1de45855c9bb2b15')  # 29ec14d6f908cabca7fae131487d96d8, 016a313606e2f99a85bb1a91083206fc
+                                    '192ce9c124a483a4fa063a1849fcb755') 
 pf_cache_check_path = os.path.join(folder_path,
-                                   '7b8ca4a4ec7addd0f55179a86e49a5a1' if os_name == 'Linux' else '8312aa61609257e46c873694f81caffc') # 8a7090ac9b2e858f4aee9e19a0bfd562
+                                   '7b8ca4a4ec7addd0f55179a86e49a5a1')
+ar2_cache_check_path = os.path.join(folder_path,
+                                   '025c9ff09c0c54793baa59dfa0115401')
 
 if os.path.exists(mod_cache_check_path):
     mod_cache = True
 if os.path.exists(pf_cache_check_path):
-    pf_cache = os_name == 'Linux'
+    pf_cache == True
+if os.path.exists(ar2_cache_check_path):
+    ar2_cache == True
 
-if not mod_cache or not pf_cache:
+if not mod_cache or not pf_cache or ar2_cache:
     print(
         f"{RED}Missing cache, join prompted {'experiences' if not mod_cache or not pf_cache else 'experience'}.{DEFAULT}")
 if not mod_cache:
-    webbrowser.open_new_tab("https://www.roblox.com/games/18504289170/texture-game")
+    webbrowser.open_new_tab("https://www.roblox.com/games/96564332811680/Asset-loader")
 if not pf_cache:
     webbrowser.open_new_tab("https://www.roblox.com/games/292439477/Phantom-Forces")
+if not ar2_cache:
+    webbrowser.open_new_tab("https://www.roblox.com/games/863266079/Apocalypse-Rising-2")
 
-while not mod_cache or not pf_cache:
+while not mod_cache or not pf_cache or ar2_cache:
     if os.path.exists(mod_cache_check_path) and not mod_cache:
         print(f"{GREEN}Modding{DEFAULT} cache detected")
         mod_cache = True
@@ -263,7 +270,11 @@ while not mod_cache or not pf_cache:
         print(f"{GREEN}PF{DEFAULT} cache detected")
         pf_cache = True
 
-    if mod_cache and pf_cache:
+    if os.path.exists(pf_cache_check_path) and not pf_cache:
+        print(f"{GREEN}AR2{DEFAULT} cache detected")
+        ar2_cache = True
+
+    if mod_cache and pf_cache and ar2_cache:
         time.sleep(1)
         os.system(clear_command)
 
@@ -303,7 +314,7 @@ def replace(files_to_delete, file_to_replace):
 def get_hashes():
     output = []
     print(
-        f"\nasset replacements:\n0:  {GREEN}Custom{DEFAULT}\n1:  {GREEN}Sights{DEFAULT}\n2:  {GREEN}Arm model tweaks{DEFAULT}\n3:  {GREEN}Sleeves{DEFAULT}\n4:  {GREEN}No textures{DEFAULT}\n5:  {GREEN}Default skyboxes{DEFAULT}\n6:  {GREEN}Gun skins{DEFAULT}\n7:  {GREEN}Gun Sounds{DEFAULT}\n8:  {GREEN}Gun smoke{DEFAULT}\n9:  {GREEN}Hit tweaks{DEFAULT}\n10: {GREEN}Grenade tweaks{DEFAULT}\n11: {GREEN}Misc tweaks{DEFAULT}\n12: {GREEN}Fizzy models{DEFAULT}")
+        f"\nasset replacements:\n0:  {GREEN}Custom{DEFAULT}\n1:  {GREEN}Sights{DEFAULT}\n2:  {GREEN}Gun sounds{DEFAULT}\n3:  {GREEN}Gun skins{DEFAULT}\n4:  {GREEN}No textures{DEFAULT}\n5: {GREEN}Hit tweaks{DEFAULT}\n6: {GREEN}Misc tweaks{DEFAULT}\n7: )
     options = input(": ")
     try:
         match int(options):
@@ -319,331 +330,30 @@ def get_hashes():
                             reticle_replacement = dlist("reticle replacement")
                             if reticle and reticle_replacement:
                                 output.append(([reticle], reticle_replacement))
-                        case 2:
-                            sightbackground = input(
-                                f"\nEnter background tweak:\n1: {GREEN}clear coyote blue background{DEFAULT}\n2: {GREEN}clear reflex blue background{DEFAULT}\n3: {GREEN}clear okp-7 blue background{DEFAULT}\n4: {GREEN}clear delta black ring{DEFAULT}\n5: {GREEN}remove sniper black circle{DEFAULT}\n6: {GREEN}remove glass hack border{DEFAULT}\n: ")
-                            match int(sightbackground):
-                                case 1:
-                                    output.append((
-                                        ['3fc9141fc7c1167c575b9361a98f04c0'],
-                                        '5873cfba79134ecfec6658f559d8f320'))  # clear coyote blue background
-                                case 2:
-                                    output.append((
-                                        ['2eaae4fe3a9fce967af993d27ad68d52'],
-                                        '5873cfba79134ecfec6658f559d8f320'))  # clear reflex blue background
-                                case 3:
-                                    output.append((
-                                        ['2eaae4fe3a9fce967af993d27ad68d52'],
-                                        '5873cfba79134ecfec6658f559d8f320'))  # clear okp-7  blue background
-                                case 4:
-                                    output.append((
-                                        ['30c4d2bb30b6b8c9ac7cfeec5db25a85', '7d5652167ec33ed349e569a55a398705'],
-                                        'd625adff6a3d75081d11b3407b0b417c'))  # delta black ring
-                                case 5:
-                                    output.append((
-                                        ['a883a2373ad6931556dce946c50c3690 ', '5a2a41b0da7ec98bf25780bb3f5d071f '],
-                                        'd625adff6a3d75081d11b3407b0b417c'))  # remove sniper junk
-                                case 6:
-                                    output.append((
-                                        ['1764672fe43c9f1d129b3d51dc3c40ee'],
-                                        'd625adff6a3d75081d11b3407b0b417c'))  # remove sniper junk
-                                case _:
-                                    print("Invalid option")
-                        case 3:
-                            output.append(([data["ballistics tracker"]["default"]], dlist("ballistics tracker")))
                         case _:
                             print("Invalid option")
                 except Exception as e:
                     print(f"{RED}Error: {e}{DEFAULT}")
-            case 2:
-                arm_option = input(
-                    f"\nEnter arm option:\n1: {GREEN}Remove options{DEFAULT}\n2: {GREEN}Bone arms{DEFAULT}\n3: {GREEN}Default arms{DEFAULT}\n: ")
-                match int(arm_option):
-                    case 1:
-                        output.append(
-                            (dlist('arm models', data['arm models'][mesh_version]), '5873cfba79134ecfec6658f559d8f320'))
-                    case 2:
-                        output.append(
-                            (data["arm models"][mesh_version]["bare arms"], "5873cfba79134ecfec6658f559d8f320"))
-                        if mesh_version == 'v1':
-                            output.append((['f5b0bcba5570d196909a78c7a697467c', '7f828aee555e5e1161d4b39faddda970'],
-                                           'c9672591983da8fffedb9cec7df1e521'))
-                        if mesh_version == 'v2':
-                            output.append((['2245ea538d66f8c9eb7f453aa3e421c2', 'd599df8997da0b6a3e5b12ab948f648b'],
-                                           'c9672591983da8fffedb9cec7df1e521'))  # c9672591983da8fffedb9cec7df1e521 needs to be updated with new hash
-                    case 3:
-                        delete_stuff(data["arm models"]["everything"])
-                    case _:
-                        print("Enter a Valid Option!")
-            case 3:
-                if os_name == "Linux":
-                    output.append(([data["linux"]["defaults"]["sleeves"]], dlist("skins")))
-                else:
-                    output.append((['8813bbc8c0f7c0901fc38c1c85935fec'], dlist("skins"))) # aa33dd87fc9db92e891361e069da1849
             case 4:
-                if os_name == "Linux":
-                    output.append((data["linux"]["textures"], 'd625adff6a3d75081d11b3407b0b417c'))
-                else:
                     output.append(
-                        (data["textures"], 'd625adff6a3d75081d11b3407b0b417c'))  # no textures without downside
-            case 5:
-                sky_option = input(
-                    f"\nIs Bloxstrap sky folder setup?\n1: {GREEN}yes{DEFAULT}\n2: {GREEN}no{DEFAULT}\n: ")
-                match int(sky_option):
-                    case 1:
-                        output.append((data["skyboxes"], 'd625adff6a3d75081d11b3407b0b417c'))  # forced default skybox
-                    case 2:
-                        bloxstrap()
-                    case _:
-                        print("Enter a Valid Option!")
-            case 6:
-                if os_name == "Linux":
-                    output.append(([dlist("gun skins", data['skins']['pf cases'])], dlist("skins")))
-                else:
+                        (data["textures"], 'd2dfde24b1e69b530645ac4fe5ef4572'))  # no textures without downside
+            case 4:
                     output.append(([dlist("gun skins")], dlist("skins")))
-            case 7:
+            case 3:
                 sound = dlist("gun sounds")
                 sound_replacement = dlist("replacement sounds")
                 if sound and sound_replacement:
                     output.append(([sound], sound_replacement))
-            case 8:
-                output.append((['8194373fb18740071f5e885bab349252'], dlist("gun smoke")))
-            case 9:  #
+            case 5:  #
                 hit_option = input(
-                    f"\nEnter hit option:\n1: {GREEN}Hitmarkers{DEFAULT}\n2: {GREEN}Hit sounds{DEFAULT}\n3: {GREEN}Kill sounds{DEFAULT}\n: ")
+                    f"\nEnter hit option:\n1: {GREEN}Headshot sounds{DEFAULT}\n1: {GREEN}Chest/limb sounds{DEFAULT}\n2:")
                 match int(hit_option):
                     case 1:
-                        output.append((['097165b476243d2095ef0a256320b06a'], dlist("hitmarker")))  # hitmarkers
+                        output.append((['097165b476243d2095ef0a256320b06a'], dlist("hitmarker")))  # headshot
                     case 2:
-                        output.append((['a177d2c00abd3e550b873d76c97ad960'], dlist("replacement sounds")))
-                    case 3:
-                        output.append(
-                            (data["replacement sounds"]["kill sounds"]["default"], dlist("replacement sounds")))
+                        output.append((['a177d2c00abd3e550b873d76c97ad960'], dlist("replacement sounds"))) #hit sounds
                     case _:
                         print("Enter a Valid Option!")
-            case 10:
-                boom_option = input(
-                    f"\nEnter grenade option:\n1: {GREEN}Model tweaks{DEFAULT}\n2: {GREEN}Explosion sound{DEFAULT}\n3: {GREEN}Grenade sound{DEFAULT} \n: ")
-                match int(boom_option):
-                    case 1:
-                        model_option = input(
-                            f"\nEnter Model option:\n1: {GREEN}RGD{DEFAULT}\n2: {GREEN}Bundle{DEFAULT}\n: ")
-                        match int(model_option):
-                            case 1:
-                                output.append((data["grenades"]["rgd"]["junk"], "5873cfba79134ecfec6658f559d8f320"))
-                                output.append(([data["grenades"]["rgd"]["main"]], dlist("grenades")))
-                                output.append(([data["grenades"]["rgd"]["texture"]], dlist("grenades")))
-                            case 2:
-                                output.append((data["grenades"]["bundle"]["junk"], "5873cfba79134ecfec6658f559d8f320"))
-                                output.append((data["grenades"]["bundle"]["main"], dlist("grenades")))
-                                output.append((data["grenades"]["bundle"]["texture"], dlist("grenades")))
-                            case _:
-                                print("Enter a Valid Option!")
-                    case 2:
-                        output.append(
-                            (data["replacement sounds"]["explosions"]["default"], dlist("replacement sounds")))
-                    case 3:
-                        output.append(([dlist("grenade sounds")], dlist("replacement sounds")))
-                    case _:
-                        print("Enter a Valid Option!")
-            case 11:
-                misc_option = input(
-                    f"\nEnter misc option:\n1: {GREEN}M21 Garand Ping{DEFAULT}\n2: {GREEN}BFG Machina Sounds{DEFAULT}\n3: {GREEN}Damage Affect Tweaks{DEFAULT}\n4: {GREEN}Remove Flashlight Beam{DEFAULT}\n5: {GREEN}Remove Bullet Casing Sounds{DEFAULT}\n: ")
-                match int(misc_option):
-                    case 1:
-                        output.append((["07fe5c19cdd350a4922412d00d567edd", "17bb7bd20bf6e1b41214619d16698ff4",
-                                        "b36ed668aea77715747e3ebadce8a439", "fbc5302726777295ae2ccd092d2748f9"],
-                                       "5873cfba79134ecfec6658f559d8f320"))
-                        output.append((["877cb2de0924e058860135f72e800aad"], "9296d1de6b6a994aee0f95c1f5206b58"))
-                    case 2:
-                        output.append((["9d1808db108b86ddaeda18968a23a804"], "1689699496f4cf0e2f0fade63f68b83a"))
-                        output.append((["3ad4ddcb4c77ab8bdfc83cf9c0cfafa9", "edf091bb925fa87900910e501da97018",
-                                        "768131a75f0d2d95e6799a0a5acd67c6", "3d92b91e96ef916b6717a53ef3f3a442",
-                                        "32e321c27457289889ac0d5fa72f7d97"], "5873cfba79134ecfec6658f559d8f320"))
-                        output.append((["160883329152d9abc5434a1b0982ec7d"], "0d05028f1eaeb0b97ecd0c473b484371"))
-                    case 3:
-                        damage_option = input(
-                            f"\nEnter option:\n1: {GREEN}Remove Damage Effect{DEFAULT}\n2: {GREEN}Anti Damage Affect{DEFAULT}\n: ")
-                        match int(damage_option):
-                            case 1:
-                                output.append(
-                                    (["a0542ee89ad3cc311bb3f7d23ef94fe4"], "5873cfba79134ecfec6658f559d8f320 "))
-                            case 2:
-                                output.append(
-                                    (["a0542ee89ad3cc311bb3f7d23ef94fe4"], "614546fcea8e0411a1c94d669809a459"))
-                    case 4:
-                        output.append((["960b11e6e7d549c8b12044201025093f"], "ac59980bedb36f4b240633b08b532d08"))
-                    case 5:
-                        output.append((["7b11fe3312b0801492d3e0f8dce62043", "853395973e94bf11a1c9edb8110da786",
-                                        "1a566c1fd2deac2677bfa26b357b5cf9", "134d345ef675a18d2c73cdbb5ca03394",
-                                        "f191e4a1f7ff200c57229c8c65c2e763", "18957c939764efa83229b65a05ab3fa7"],
-                                       "5873cfba79134ecfec6658f559d8f320"))
-                    case _:
-                        print("Enter a Valid Option!")
-            case 12:
-                fizzy_option = input(
-                    f"\nEnter misc option:\n1:  {GREEN}G50 > USP MATCH{DEFAULT}\n2:  {GREEN}Potato Grip > Flashlight Launcher{DEFAULT}\n3:  {GREEN}SCAR-L > AR2{DEFAULT}\n4:  {GREEN}M870 > Gravity Gun{DEFAULT}\n5:  {GREEN}ZIP22 > Spray Bottle{DEFAULT}\n6:  {GREEN}NTW > Tau Cannon{DEFAULT}\n7:  {GREEN}ASP Baton > Stun Stick{DEFAULT}\n8:  {GREEN}Hardballer > Hyperlaser{DEFAULT}\n9:  {GREEN}Skeleton Grip Laser{DEFAULT}\n10: {GREEN}Flashlight Laser{DEFAULT}\n11: {GREEN}Hecate > Railgun{DEFAULT}\n: ")
-                match int(fizzy_option):
-                    case 1:
-                        output.append(
-                            (data['fizzy'][mesh_version]['usp']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append(
-                            (data['fizzy'][mesh_version]['usp']['replace'],
-                             data['fizzy'][mesh_version]['usp']['replacement']))
-                    case 2:
-                        output.append(
-                            (data['fizzy'][mesh_version]['flashlight launcher']['remove'],
-                             "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['flashlight launcher']['replace'],
-                                       data['fizzy'][mesh_version]['flashlight launcher']['replacement']))
-                    case 3:
-                        output.append(
-                            (data['fizzy'][mesh_version]['ar2']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append(
-                            (data['fizzy'][mesh_version]['ar2']['replace'],
-                             data['fizzy'][mesh_version]['ar2']['replacement']))
-                    case 4:
-                        output.append(
-                            (data['fizzy'][mesh_version]['gravity gun']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['gravity gun']['replace'],
-                                       data['fizzy'][mesh_version]['gravity gun']['replacement']))
-                    case 5:
-                        output.append(
-                            (data['fizzy'][mesh_version]['spray bottle']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['spray bottle']['replace'],
-                                       data['fizzy'][mesh_version]['spray bottle']['replacement']))
-                    case 6:
-                        output.append(
-                            (data['fizzy'][mesh_version]['tau cannon']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['tau cannon']['replace'],
-                                       data['fizzy'][mesh_version]['tau cannon']['replacement']))
-                    case 7:
-                        output.append((data['fizzy'][mesh_version]['stun stick']['replace'],
-                                       data['fizzy'][mesh_version]['stun stick']['replacement']))
-                    case 8:
-                        output.append(
-                            (data['fizzy'][mesh_version]['hyperlaser']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['hyperlaser']['replace'],
-                                       data['fizzy'][mesh_version]['hyperlaser']['replacement']))
-                        variant_option = input(
-                            f"\nEnter misc option:\n1: {GREEN}Colorable{DEFAULT}\n2: {GREEN}Blue/Purple{DEFAULT}\n3: {GREEN}Yellow/Green{DEFAULT}\n4: {GREEN}Pink/Orange{DEFAULT}\n: ")
-                        match int(variant_option):
-                            case 1:
-                                output.append((data['fizzy'][mesh_version]['hyperlaser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['hyperlaser']['custom']['colorable']))
-                            case 2:
-                                output.append((data['fizzy'][mesh_version]['hyperlaser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['hyperlaser']['custom']['blue/purple']))
-                            case 3:
-                                output.append((data['fizzy'][mesh_version]['hyperlaser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['hyperlaser']['custom']['yellow/green']))
-                            case 4:
-                                output.append((data['fizzy'][mesh_version]['hyperlaser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['hyperlaser']['custom']['pink/orange']))
-                    case 9:
-                        variant_option = input(
-                            f"\nEnter misc option:\n1: {GREEN}Skelaser White{DEFAULT}\n2: {GREEN}Skelaser Yellow{DEFAULT}\n3: {GREEN}Skelaser Teal{DEFAULT}\n4: {GREEN}Skelaser Pink{DEFAULT}\n5: {GREEN}Skelaser White Dark{DEFAULT}\n6: {GREEN}Skelaser Yellow Dark{DEFAULT}\n7: {GREEN}Skelaser Teal Dark{DEFAULT}\n8: {GREEN}Skelaser Pink Dark{DEFAULT}\n: ")
-                        match int(variant_option):
-                            case 1:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom']['white']))
-                            case 2:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom']['yellow']))
-                            case 3:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom']['teal']))
-                            case 4:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom']['pink']))
-                            case 5:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom'][
-                                                   'white dark']))
-                            case 6:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom'][
-                                                   'yellow dark']))
-                            case 7:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom'][
-                                                   'teal dark']))
-                            case 8:
-                                output.append((data['fizzy'][mesh_version]['skeleton grip laser']['custom']['default'],
-                                               data['fizzy'][mesh_version]['skeleton grip laser']['custom'][
-                                                   'pink dark']))
-                    case 10:
-                        output.append(
-                            (data['fizzy'][mesh_version]['flashlight laser']['remove'],
-                             "058e54ef5ad3fb914c34a6f446a36702"))
-                        if mesh_version == 'v1':
-                            variant_option = input(
-                                f"\nEnter misc option:\n1: {GREEN}Flashlight Laser White{DEFAULT}\n2: {GREEN}Flashlight Laser Yellow{DEFAULT}\n3: {GREEN}Flashlight Laser Teal{DEFAULT}\n4: {GREEN}Flashlight Laser Pink{DEFAULT}\n5: {GREEN}Flashlight Laser White Dark{DEFAULT}\n6: {GREEN}Flashlight Laser Yellow Dark{DEFAULT}\n7: {GREEN}Flashlight Laser Teal Dark{DEFAULT}\n8: {GREEN}Flashlight Laser Pink Dark{DEFAULT}\n: ")
-                            match int(variant_option):
-                                case 1:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['white']))
-                                case 2:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['yellow']))
-                                case 3:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['teal']))
-                                case 4:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['pink']))
-                                case 5:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom'][
-                                                       'white dark']))
-                                case 6:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom'][
-                                                       'yellow dark']))
-                                case 7:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom'][
-                                                       'teal dark']))
-                                case 8:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom'][
-                                                       'pink dark']))
-                        if mesh_version == 'v2':
-                            variant_option = input(
-                                f"\nEnter misc option:\n1: {GREEN}Flashlight Laser Yellow{DEFAULT}\n2: {GREEN}Flashlight Laser Pink{DEFAULT}\n3: {GREEN}Flashlight Laser Orange{DEFAULT}\n4: {GREEN}Flashlight Laser Blue{DEFAULT}\n5: {GREEN}Flashlight Laser Black{DEFAULT}\n: ")
-                            match int(variant_option):
-                                case 1:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['yellow']))
-                                case 2:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['pink']))
-                                case 3:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['orange']))
-                                case 4:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['blue']))
-                                case 5:
-                                    output.append((data['fizzy'][mesh_version]['flashlight laser']['custom']['default'],
-                                                   data['fizzy'][mesh_version]['flashlight laser']['custom']['black']))
-                    case 11:
-                        output.append(
-                            (data['fizzy'][mesh_version]['railgun']['remove'], "058e54ef5ad3fb914c34a6f446a36702"))
-                        output.append((data['fizzy'][mesh_version]['railgun']['replace'],
-                                       data['fizzy'][mesh_version]['railgun']['replacement']))
-                        variant_option = input(
-                            f"\nEnter barrel option:\n1: {GREEN}Regular Barrel{DEFAULT}\n2: {GREEN}Long Barrel{DEFAULT}\n3: {GREEN}Short Barrel{DEFAULT}\n: ")
-                        match int(variant_option):
-                            case 1:
-                                output.append((data['fizzy'][mesh_version]['railgun']['custom']['default'],
-                                               data['fizzy'][mesh_version]['railgun']['custom']['regular']))
-                            case 2:
-                                output.append((data['fizzy'][mesh_version]['railgun']['custom']['default'],
-                                               data['fizzy'][mesh_version]['railgun']['custom']['heavy']))
-                            case 3:
-                                output.append((data['fizzy'][mesh_version]['railgun']['custom']['default'],
-                                               data['fizzy'][mesh_version]['railgun']['custom']['light']))
             case _:
                 print("Invalid number.")
     except Exception as e:
@@ -652,7 +362,7 @@ def get_hashes():
     return output
 
 
-print(f"Welcome to: {GREEN}Fleasion!{DEFAULT}\n")
+print(f"Welcome to: {GREEN}Reasion!{DEFAULT}\n")
 start = True
 while True:
     if not start:
