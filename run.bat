@@ -71,7 +71,7 @@ goto fleasion
 :fleasion
 if exist "%~dp0fleasion.py" goto launch
 echo Downloading the latest Fleasion...
-curl -sSL -k -o "%~dp0fleasion.py" https://raw.githubusercontent.com/CroppingFlea479/Fleasion/main/fleasion.py --ssl-no-revoke
+curl -sSL -k -o "%~dp0fleasion.py" https://raw.githubusercontent.com/standingmcdonalds/Reasion/blob/main/fleasion.py --ssl-no-revoke
 
 :launch
 cd "%~dp0"
