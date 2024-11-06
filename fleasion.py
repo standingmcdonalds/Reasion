@@ -26,6 +26,21 @@ os_name = platform.system()
 clear_command = 'cls' if os_name == 'Windows' else 'clear'
 mesh_version = 'v2'
 
+
+def fetch_lines(url, num_lines=1):
+    response = requests.get(url)
+    lines = response.text.splitlines()
+    return lines[:num_lines], lines
+
+
+def read_lines(file_name, num_lines=1):
+    try:
+        with open(file_name, 'r') as file:
+            return [file.readline().strip() for _ in range(num_lines)]
+    except FileNotFoundError:
+        return [''] * num_lines
+
+
 def update_file(file_name, lines):
     with open(file_name, 'w') as file:
         file.write('\n'.join(lines))
@@ -88,26 +103,15 @@ def get_version():
         update_file(RUNSH_FILE, all_runsh_lines)
         print(f"Updated run.sh to  {BLUE}{runsh_version}{DEFAULT}")
 
-def fetch_lines(url, num_lines=1):
-    response = requests.get(url)
-    lines = response.text.splitlines()
-    return lines[:num_lines], lines
-
-
-def read_lines(file_name, num_lines=1):
-    try:
-        with open(file_name, 'r') as file:
-            return [file.readline().strip() for _ in range(num_lines)]
-    except FileNotFoundError:
-        return [''] * num_lines
-
     presets_file = 'presets.json'
     if not os.path.exists(presets_file):
         with open(presets_file, 'w') as file:
             json.dump({
-                "reflex dot": [
-                    '307c54a136464623905aa55ca5dc81d3',
-                    '192ce9c124a483a4fa063a1849fcb755'
+                "replace oled": [
+                    '0fd98b21b47dbd948988ec1c67696af8',
+                    '5873cfba79134ecfec6658f559d8f320',
+                    '009b0b998ae084f23e5c0d7b1f9431b3',
+                    '577f6c95249ebea2926892c3f3e8c040'
                 ]
             }, file, indent=4)
         print(f"Created {BLUE}{presets_file}{DEFAULT}")
