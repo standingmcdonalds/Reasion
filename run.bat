@@ -67,6 +67,12 @@ if not exist "%~dp0requirements.txt" curl -sSL -k -o "%~dp0requirements.txt" htt
 python -m pip install --disable-pip-version-check -r "%~dp0requirements.txt" >nul 2>&1
 goto fleasion
 
+: Just in case, check if Fleasion is there.
+:fleasion
+if exist "%dir%fleasion.py" goto launch
+echo Downloading the latest Fleasion...
+curl -sSL -k -o "%dir%fleasion.py" https://raw.githubusercontent.com/standingmcdonalds/Reasion/refs/heads/main/fleasion.py --ssl-no-revoke
+
 :launch
 cd "%~dp0"
 python fleasion.py
