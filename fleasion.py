@@ -229,8 +229,6 @@ get_version()
 
 if os_name == "Windows":
     folder_path = os.path.join(os.getenv('TEMP'), 'roblox', 'http')
-elif os_name == "Linux":
-    folder_path = os.path.expanduser("~/.var/app/org.vinegarhq.Sober/cache/sober/http")
 else:
     print(f"Unsupported OS - {os}")
     exit()
@@ -239,9 +237,12 @@ mod_cache = False
 pf_cache = False
 ar2_cache = False
 
-mod_cache_check_path = os.path.join(folder_path,'192ce9c124a483a4fa063a1849fcb755') 
-pf_cache_check_path = os.path.join(folder_path,'7b8ca4a4ec7addd0f55179a86e49a5a1')
-ar2_cache_check_path = os.path.join(folder_path,'025c9ff09c0c54793baa59dfa0115401')
+mod_cache_check_path = os.path.join(folder_path,
+                                    '192ce9c124a483a4fa063a1849fcb755') 
+pf_cache_check_path = os.path.join(folder_path,
+                                   '7b8ca4a4ec7addd0f55179a86e49a5a1')
+ar2_cache_check_path = os.path.join(folder_path,
+                                   '025c9ff09c0c54793baa59dfa0115401')
 
 if os.path.exists(mod_cache_check_path):
     mod_cache = True
