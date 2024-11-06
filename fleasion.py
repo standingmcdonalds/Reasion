@@ -349,9 +349,9 @@ def get_hashes():
                     f"\nEnter hit option:\n1: {GREEN}Headshot sounds{DEFAULT}\n1: {GREEN}Chest/limb sounds{DEFAULT}\n2:")
                 match int(hit_option):
                     case 1:
-                        output.append((['097165b476243d2095ef0a256320b06a'], dlist("hitmarker")))  # headshot
+                        output.append((['f18a3d8802af7033d415ee22d9097990'], dlist("replacement sounds")))  # headshot
                     case 2:
-                        output.append((['a177d2c00abd3e550b873d76c97ad960'], dlist("replacement sounds"))) #hit sounds
+                        output.append((['4e8756761c1bfe163a5a03ef5d6b0d56', '489a66f78dd94311b84f9e368db4df82'], dlist("replacement sounds"))) #hit sounds
                     case _:
                         print("Enter a Valid Option!")
             case _:
