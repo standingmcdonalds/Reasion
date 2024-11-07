@@ -234,20 +234,15 @@ else:
     exit()
 
 mod_cache = False
-pf_cache = False
 ar2_cache = False
 
 mod_cache_check_path = os.path.join(folder_path,
                                     '192ce9c124a483a4fa063a1849fcb755') 
-pf_cache_check_path = os.path.join(folder_path,
-                                   'f805e3b08c949c46a8f137e10c4d3fdd')
 ar2_cache_check_path = os.path.join(folder_path,
                                    '6d409aa81031bf5e6c43c9c56f2e2b49')
 
 if os.path.exists(mod_cache_check_path):
     mod_cache = True
-if os.path.exists(pf_cache_check_path):
-    pf_cache == True
 if os.path.exists(ar2_cache_check_path):
     ar2_cache == True
 
@@ -256,25 +251,19 @@ if not mod_cache or not pf_cache or ar2_cache:
         f"{RED}Missing cache, join prompted {'experiences' if not mod_cache or not pf_cache else 'experience'}.{DEFAULT}")
 if not mod_cache:
     webbrowser.open_new_tab("https://www.roblox.com/games/96564332811680/Asset-loader")
-if not pf_cache:
-    webbrowser.open_new_tab("https://www.roblox.com/games/292439477/Phantom-Forces")
 if not ar2_cache:
     webbrowser.open_new_tab("https://www.roblox.com/games/863266079/Apocalypse-Rising-2")
 
-while not mod_cache or not pf_cache or ar2_cache:
+while not mod_cache or not ar2_cache:
     if os.path.exists(mod_cache_check_path) and not mod_cache:
         print(f"{GREEN}Modding{DEFAULT} cache detected")
         mod_cache = True
 
-    if os.path.exists(pf_cache_check_path) and not pf_cache:
-        print(f"{GREEN}PF{DEFAULT} cache detected")
-        pf_cache = True
-
-    if os.path.exists(pf_cache_check_path) and not pf_cache:
+    if os.path.exists(ar2_cache_check_path) and not ar2_cache:
         print(f"{GREEN}AR2{DEFAULT} cache detected")
         ar2_cache = True
 
-    if mod_cache and pf_cache and ar2_cache:
+    if mod_cache and ar2_cache:
         time.sleep(1)
         os.system(clear_command)
 
@@ -314,7 +303,7 @@ def replace(files_to_delete, file_to_replace):
 def get_hashes():
     output = []
     print(
-        f"\nasset replacements:\n0:  {GREEN}Custom{DEFAULT}\n1:  {GREEN}Sights{DEFAULT}\n2:  {GREEN}Gun sounds{DEFAULT}\n3:  {GREEN}Gun skins{DEFAULT}\n4:  {GREEN}No textures{DEFAULT}\n5: {GREEN}Hit tweaks{DEFAULT}\n6: {GREEN}Misc tweaks{DEFAULT}\n7:")
+        f"\nasset replacements:\n0:  {GREEN}Custom{DEFAULT}\n1:  {GREEN}Sights{DEFAULT}\n2:  {GREEN}Gun sounds{DEFAULT}\n3:  {GREEN}Gun skins{DEFAULT}\n4:  {GREEN}No textures{DEFAULT}\n5: {GREEN}Hit tweaks{DEFAULT}\n6: {GREEN}Misc tweaks{DEFAULT}")
     options = input(": ")
     try:
         match int(options):
@@ -322,7 +311,7 @@ def get_hashes():
                 output.append(([input("\nEnter asset to change: ")], input("Enter replacement: ")))
             case 1:
                 sight_option = input(
-                    f"\nEnter sight option:\n1: {GREEN}Reticle tweaks{DEFAULT}\n2: {GREEN}Sight model tweaks{DEFAULT}\n3: {GREEN}Ballistics tracker tweaks{DEFAULT}\n: ")
+                    f"\nEnter sight option:\n1: {GREEN}Reticle tweaks{DEFAULT}")
                 try:
                     match int(sight_option):
                         case 1:
@@ -337,9 +326,9 @@ def get_hashes():
             case 4:
                     output.append(
                         (data["textures"], 'd2dfde24b1e69b530645ac4fe5ef4572'))  # no textures without downside
-            case 4:
-                    output.append(([dlist("gun skins")], dlist("skins")))
             case 3:
+                    output.append(([dlist("gun skins")], dlist("skins")))
+            case 2:
                 sound = dlist("gun sounds")
                 sound_replacement = dlist("replacement sounds")
                 if sound and sound_replacement:

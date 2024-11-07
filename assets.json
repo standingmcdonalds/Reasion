@@ -42,7 +42,6 @@
             },
     "replacement sounds": {
         "gun sounds": {
-            "ar2": {
                 "rifles": {
                     "fal unsup": "85ac1448717038250b66aa9c1faef219",
                     "fal sup": "ab01db6ce29d4b713da9dbc2f33b1243",
@@ -86,6 +85,7 @@
         "chest/limb shot sounds": {
             "limb": "4e8756761c1bfe163a5a03ef5d6b0d56",
             "chest": "489a66f78dd94311b84f9e368db4df82"
+        }
         }
     },
     "reticles": {
