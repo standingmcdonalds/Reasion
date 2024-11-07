@@ -80,8 +80,10 @@
                 "snipers": {
                     "m1918 tankgewehr": "0f3205121a90b7d0c44f49bec9a3b8f3"
                 }
-            }
-        }
+    }
+},
+"hit sounds": {
+}
     },
     "reticles": {
         "ar2": {
