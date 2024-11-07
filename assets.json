@@ -42,6 +42,7 @@
             },
     "replacement sounds": {
         "gun sounds": {
+            "ar2":{
                 "rifles": {
                     "fal unsup": "85ac1448717038250b66aa9c1faef219",
                     "fal sup": "ab01db6ce29d4b713da9dbc2f33b1243",
@@ -78,18 +79,12 @@
                 },
                 "snipers": {
                     "m1918 tankgewehr": "0f3205121a90b7d0c44f49bec9a3b8f3"
-                },
-        "headshot sounds": {
-            "default": "f18a3d8802af7033d415ee22d9097990"
-        },
-        "chest/limb shot sounds": {
-            "limb": "4e8756761c1bfe163a5a03ef5d6b0d56",
-            "chest": "489a66f78dd94311b84f9e368db4df82"
-        }
+                }
+            }
         }
     },
     "reticles": {
-        "all": {
+        "ar2": {
             "reflex": "307c54a136464623905aa55ca5dc81d3",
             "holo": "913baf61aa5dd1d33934bd8cacd7fbe0",
             "cqr": "66657a1f7e6de28203ef157353ee6ad7",
@@ -101,7 +96,7 @@
         }
     },
     "reticle replacement": {
-        "all": {
+        "ar2": {
             "reflex": "307c54a136464623905aa55ca5dc81d3",
             "holo": "913baf61aa5dd1d33934bd8cacd7fbe0",
             "cqr": "66657a1f7e6de28203ef157353ee6ad7",
@@ -527,4 +522,3 @@
     ]
                 }
             }
-        
