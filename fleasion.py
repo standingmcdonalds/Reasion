@@ -248,7 +248,7 @@ if os.path.exists(ar2_cache_check_path):
 
 if not mod_cache or not ar2_cache:
     print(
-        f"{RED}Missing cache, join prompted {'experiences' if not mod_cache or not ar2_cache else 'experience'}.{DEFAULT}")
+        f"{RED}Missing cache, join prompted {'experiences' if not mod_cache or not ar2_cache}{DEFAULT}")
 if not mod_cache:
     webbrowser.open_new_tab("https://www.roblox.com/games/96564332811680/Asset-loader")
 if not ar2_cache:
